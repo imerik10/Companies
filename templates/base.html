@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="text-gray-400 bg-gray-900 body-font" style="background-color: #0c1424;">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a href="{% url 'home' %}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <img src="{% static 'images/companies_logo.jpg' %}" alt="error" style="border-radius: 50%;width: 65px;">
+            <span class="ml-3 text-xl">Companies</span>
+          </a>
+          {% if user.is_authenticated %}
+          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <div class="mr-5 hover:text-white"></div>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5 mr-3" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>User: {{user.username}}
+            <div class="mr-5 hover:text-white"></div>
+            <a href="{% url 'logout' %}" class="mr-5 hover:text-white">Logout</a>
+            </button></a>
+            <a href="{% url 'home' %}"><button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Home
+          </button></a>
+        </div>
+          {% else %}
+          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <a href="{% url 'reg' %}" class="mr-5 hover:text-white">Registration</a>
+            <a href="{% url 'login' %}" class="mr-5 hover:text-white">Login</a>
+          <a href="{% url 'home' %}"><button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Home
+          </button></a>
+        </div>
+        {% endif %}
+      </header>
+      {% block content %}
+      {% endblock %}
+
+
+      <footer>
+        <footer class="text-gray-400 bg-gray-900 body-font" style="background-color: #0c1424;">
+            <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+              <a href="{% url 'home' %}" class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                <img src="{% static 'images/companies_logo.jpg' %}" alt="error" style="border-radius: 50%;width: 65px;">
+                <span class="ml-3 text-xl">Companies</span>
+              </a>
+              <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2024 Companies —
+                <a href="https://t.me/baxit0v" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@baxit0v</a>
+              </p>
+            </div>
+          </footer>
+      </footer>
+    
+</body>
+</html>

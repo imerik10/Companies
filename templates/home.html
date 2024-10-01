@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="text-2xl font-medium title-font mb-4 text-white tracking-widest">COMPANIES</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here you can find companies and check their courses and mentors.</p>
+    </div>
+    <div class="flex flex-wrap -m-4">
+      {% for company in companyyy %}
+      <div class="p-4 lg:w-1/2">
+        <div class="border-2 border-gray-300 rounded-lg p-4 h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+          <a href="{% url 'detail' company.id %}">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="{{company.company_logo.url}}"  style="border-radius: 50%;">
+          </a>
+          <div class="flex-grow sm:pl-8">
+            <a href="{% url 'detail' company.id %}"><h2 class="title-font font-medium text-lg text-white">{{company.company_title}}</h2></a>
+            <a href="{% url 'detail' company.id %}"><h3 class="text-gray-500 mb-3">COMPANY NAME</h3></a>
+            <a href="{% url 'detail' company.id %}"><p class="mb-4">{{company.company_description |slice:":30"}}...</p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</section>
+
+    
+{% endblock %}

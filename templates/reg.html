@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+      <h1 class="title-font font-medium text-3xl text-white">Join us and experience the best of our services</h1>
+      <p class="leading-relaxed mt-4">Sign up now to unlock exclusive features and enjoy a tailored experience just for you.</p>
+    </div>
+    <div class="lg:w-2/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-white text-lg font-medium title-font mb-5">Sign Up</h2>
+      <form action="{% url 'reg' %}" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="relative mb-4">
+          <label for="username" class="leading-7 text-sm text-gray-400">Username</label>
+          {{ form.username.errors }}
+          <input type="text" id="username" name="username" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+        </div>
+        <div class="relative mb-4">
+          <label for="password1" class="leading-7 text-sm text-gray-400">Password</label>
+          {{ form.password1.errors }}
+          <input type="password" id="password1" name="password1" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+        </div>
+        <div class="relative mb-4">
+          <label for="password2" class="leading-7 text-sm text-gray-400">Confirm Password</label>
+          {{ form.password2.errors }}
+          <input type="password" id="password2" name="password2" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+        </div>
+        <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
+        <a href="{% url 'login' %}">
+        <p class="text-xs mt-3">Do you already have an account? Then log in</p>
+    </a>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
